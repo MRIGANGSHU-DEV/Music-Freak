@@ -1,22 +1,17 @@
-// Import Firebase
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-// Your Firebase configuration (Replace with your actual config)
 const firebaseConfig = {
-    apiKey: "AIzaSyDUkLtrV7tftwmo6Ur_mR19hGrqYf1cQ0M",
-    authDomain: "music-freak-16f6e.firebaseapp.com",
-    projectId: "music-freak-16f6e",
-    storageBucket: "music-freak-16f6e.firebasestorage.app",
-    messagingSenderId: "1045931756519",
-    appId: "1:1045931756519:web:7a326ca199fa7f08f84b42",
-    measurementId: "G-0SR3GBFD7H"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Firestore
 const db = getFirestore(app);
 
 export { db };
