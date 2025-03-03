@@ -11,6 +11,9 @@ import MusicGenres from "./components/MusicGenres";
 import MoodPlaylist from "./components/MoodPlaylist";
 import TrendingSongs from "./components/TrendingSongs";
 import Footer from "./components/Footer";
+import BollywoodArtists from "./components/BollywoodArtists";
+import PopularAlbums from "./components/PopularAlbums";
+import AlbumDetails from "./components/AlbumDetails";
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
@@ -40,9 +43,19 @@ function App() {
                 <Footer/>
               </>
             } />
+            <Route path="/albums" element={
+                <>
+                  <PopularAlbums/>
+                  <Footer/>
+                </>
+            }/>
+
+            <Route path="/albums/:albumName" element={<AlbumDetails setCurrentSong={setCurrentSong} />} />
+
             <Route path="/artists" element={
               <>
                 <PopularArtists/>
+                <BollywoodArtists/>
                 <Footer/>
               </>
             }/>
