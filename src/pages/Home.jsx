@@ -9,7 +9,6 @@ const Home = () => {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
-      <Navbar />
       <div className="relative z-10">
         <h2 className="text-6xl font-bold text-white">
           All the <span className="text-pink-500">Best Songs</span> <br/> in One Place

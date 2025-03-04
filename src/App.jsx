@@ -14,6 +14,10 @@ import Footer from "./components/Footer";
 import BollywoodArtists from "./components/BollywoodArtists";
 import PopularAlbums from "./components/PopularAlbums";
 import AlbumDetails from "./components/AlbumDetails";
+import Navbar from "./components/Navbar";
+import LoginForm from "./components/LoginForm";
+import Signup from "./components/Signup";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
@@ -23,41 +27,51 @@ function App() {
         <Sidebar />
         <div className="flex-1 ml-64 flex flex-col">
           <Routes>
+            <Route path="/login" element={
+              <LoginForm/>
+            }/>
+            <Route path="/signup" element={
+              <Signup/>
+            }/>
+
             <Route path="/" element={
-              <>
-                <Home />
-                <WeeklyTopSongs setCurrentSong={setCurrentSong} />
-                <HotHitsHindi setCurrentSong={setCurrentSong} />
-                <PopularArtists />
-                <TrendingSongs setCurrentSong={setCurrentSong}/>
-                <Footer/>
+              
+                <ProtectedRoute>
+                  <WeeklyTopSongs setCurrentSong={setCurrentSong} />
+                  <HotHitsHindi setCurrentSong={setCurrentSong} />
+                  <PopularArtists />
+                  <TrendingSongs setCurrentSong={setCurrentSong}/>
+                  <Footer/>
+                </ProtectedRoute>
                 
-              </>
+              
             } />
             <Route path="/discover" element={
-              <>
-                <MusicGenres/>
-                <MoodPlaylist/>
-                <PopularArtists/>
-                <TrendingSongs setCurrentSong={setCurrentSong}/>
-                <Footer/>
-              </>
+            
+                <ProtectedRoute>
+                  <MusicGenres/>
+                  <MoodPlaylist/>
+                  <PopularArtists/>
+                  <TrendingSongs setCurrentSong={setCurrentSong}/>
+                  <Footer/>
+                </ProtectedRoute>
+              
             } />
             <Route path="/albums" element={
-                <>
+                <ProtectedRoute>
                   <PopularAlbums/>
                   <Footer/>
-                </>
+                </ProtectedRoute>
             }/>
 
             <Route path="/albums/:albumName" element={<AlbumDetails setCurrentSong={setCurrentSong} />} />
 
             <Route path="/artists" element={
-              <>
+              <ProtectedRoute>
                 <PopularArtists/>
                 <BollywoodArtists/>
                 <Footer/>
-              </>
+              </ProtectedRoute>
             }/>
           </Routes>
         </div>
